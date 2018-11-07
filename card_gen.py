@@ -34,7 +34,7 @@ def sum_all(cc, sum_nums):
 
 
 def checksum(sum_nums, cc):
-    for x in range(1, 10):
+    for x in range(10):
         if (sum_nums + x) % 10 == 0:
             cc.append(x)
     return cc
@@ -52,11 +52,6 @@ def main():
 
         # calculate sum of odd elements and sum of multiplied by 2 even elements
         sum_ = sum_all(card, sum_)
-
-        # if we don't have any remainder we need to get another card number, because we won't be able to calculate checksum
-        if sum_ % 10 == 0:
-            sum_ = 0
-            card.clear()
 
     card = checksum(sum_, card)
 
