@@ -41,11 +41,13 @@ def checksum(sum_nums, cc):
 
 
 def main():
-    pay_s = master_or_visa()
 
-    card = []
-    sum_ = 0
-    while sum_ == 0:
+    all_cards = []
+    pay_s = master_or_visa()
+    num_cards = int(input("How many card numbers do you want to generate: "))
+    for i in range(num_cards):
+        card = []
+        sum_ = 0
 
         # generate 15 numbers
         card = random_number(card, pay_s)
@@ -53,12 +55,19 @@ def main():
         # calculate sum of odd elements and sum of multiplied by 2 even elements
         sum_ = sum_all(card, sum_)
 
-    card = checksum(sum_, card)
+        # calculate last digit
+        card = checksum(sum_, card)
 
-    card = "".join(str(x) for x in card)
-    print(f"Generated card: {card}")
+        # convert to string
+        card = "".join(str(x) for x in card)
 
+        # add to list of cards
+        all_cards.append(card)
+
+    with open('card_numbers.txt', "a") as file:
+        for card in all_cards:
+            file.write(f"Generated card: {card}\n")
+    print(f'{num_cards} generated cards were saved to card_numbers.txt')
 
 if __name__ == '__main__':
     main()
-
