@@ -1,3 +1,6 @@
+# Generate random card numbers using Luhn algorithm; You can check results with card_validator.py
+
+
 import random
 
 
